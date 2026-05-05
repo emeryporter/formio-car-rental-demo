@@ -1,0 +1,40 @@
+:root {
+  /* Paper & ink — warm bone / deep warm-black */
+  --paper: #f7f4ec;
+  --paper-deep: #ede7d5;
+  --paper-raised: #fbf9f2;
+  --ink: #14110c;
+  --ink-deep: #0a0805;
+  --ink-soft: #2a2620;
+  --ink-muted: #554e40;
+  --ink-faint: #867c6c;
+
+  /* Rules */
+  --rule: rgba(20, 17, 12, 0.22);
+  --rule-strong: rgba(20, 17, 12, 0.52);
+
+  /* Single accent — editorial red, used deliberately */
+  --accent: #c0362d;
+  --accent-ink: #8a2519;
+  --danger: #8a2519;
+
+  /* One typeface for everything */
+  --font-serif: "EB Garamond", "Adobe Garamond Pro", Garamond, Georgia, "Times New Roman", serif;
+
+  /* Small-caps tracking — serif labels look best at 0.16–0.2em */
+  --track-label: 0.18em;
+  --track-kicker: 0.22em;
+  --track-display: -0.015em;
+
+  /* Layout */
+  --page-max: 1140px;
+  --gutter: clamp(24px, 5vw, 72px);
+}
+
+/* Very faint paper grain — adds depth, doesn't impede readability */
+html {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.05  0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+}

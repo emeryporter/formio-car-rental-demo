@@ -1,0 +1,71 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { margin: 0; padding: 0; color: var(--ink); min-height: 100%; }
+
+html { font-size: 19px; }
+
+body {
+  font-family: var(--font-serif);
+  font-size: 1rem;            /* 19px */
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+}
+
+p { margin: 0 0 1em 0; line-height: 1.6; color: var(--ink-soft); max-width: 64ch; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.12s ease, text-decoration-color 0.12s ease;
+}
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+em, i { font-style: italic; }
+
+strong, b { font-weight: 600; color: var(--ink); }
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: var(--track-display);
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+button { font-family: inherit; font-size: inherit; }
+
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--ink); color: var(--paper); }
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+/* Thin vertical accent rule running through the page (a subtle editorial spine) */
+.page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--gutter) + 6px);
+  width: 1px;
+  background: var(--rule);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 900px) { .page::before { display: none; } }
+
+.page > * { position: relative; z-index: 1; }

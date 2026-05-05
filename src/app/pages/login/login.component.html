@@ -1,0 +1,21 @@
+<app-page-frame>
+  <div class="auth-frame">
+    <div class="auth-head">
+      <span class="kicker">Welcome back</span>
+      <h1>Sign <em>in.</em></h1>
+    </div>
+
+    @if (banner(); as b) {
+      <div [class]="bannerWarn() ? 'banner banner-warn' : 'banner'">{{ b }}</div>
+    }
+
+    <formio
+      [src]="loginUrl"
+      (submit)="onSubmit()">
+    </formio>
+
+    <div class="auth-foot">
+      New here? <a routerLink="/register">Register →</a>
+    </div>
+  </div>
+</app-page-frame>

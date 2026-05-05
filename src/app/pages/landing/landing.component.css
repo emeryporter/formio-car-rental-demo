@@ -1,0 +1,40 @@
+.hero-step-label {
+  margin-top: 12px;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.three-up {
+  padding: 72px 0 96px;
+  display: grid;
+  grid-template-columns: 120px repeat(3, 1fr);
+  gap: 28px;
+}
+
+.three-up-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.three-up-label {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.three-up-body {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+  .three-up { grid-template-columns: 1fr; }
+}

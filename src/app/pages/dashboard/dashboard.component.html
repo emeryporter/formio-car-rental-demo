@@ -1,0 +1,51 @@
+<app-page-frame issueLabel="Your account">
+  @if (confirmed()) {
+    <div class="banner">Reservation confirmed. It's in your list below.</div>
+  }
+
+  <section class="hero dashboard-hero rise">
+    <div>
+      <div class="section-number">00</div>
+    </div>
+    <div class="hero-meta">
+      <span class="kicker kicker-accent">Welcome back</span>
+      <h1 class="display"><em>{{ firstName() }}.</em></h1>
+      <p class="lede">Your reservations, past and upcoming. Start a new rental any time.</p>
+      <div class="hero-cta">
+        <a routerLink="/new" class="btn-editorial">Start a new rental →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="dashboard-list">
+    <app-section-head number="01" label="Reservations" title="Your bookings." />
+
+    @if (reservations() === null && !loadError()) {
+      <p class="loading-italic">Loading…</p>
+    }
+
+    @if (reservations(); as list) {
+      @if (list.length === 0) {
+        <div class="empty-state">
+          No reservations yet. <a routerLink="/new">Start your first →</a>
+        </div>
+      } @else {
+        <div>
+          @for (r of list; track r._id; let i = $index) {
+            <app-reservation-row [reservation]="r" [index]="i" />
+          }
+        </div>
+      }
+    }
+  </section>
+
+  @if (loadError(); as err) {
+    <app-toast
+      [message]="err"
+      actionLabel="Retry"
+      (action)="loadReservations()"
+      (dismiss)="dismissToast()" />
+  }
+</app-page-frame>

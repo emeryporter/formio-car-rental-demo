@@ -1,0 +1,923 @@
+/* ====================================================================
+   Editorial overrides for the Form.io renderer — serif everywhere.
+   Loaded AFTER bootstrap.min.css and formio.full.min.css so these win.
+   ==================================================================== */
+
+.formio-form,
+.formio-form * {
+  font-family: var(--font-serif) !important;
+}
+
+/* Restore FontAwesome for icon elements. The universal serif rule above
+   claims every descendant of .formio-form via !important, which would
+   otherwise redirect <i class="fa fa-X"> away from the icon font and
+   leave glyph slots empty. */
+.formio-form i.fa,
+.formio-form i[class*="fa-"],
+.formio-form .fa::before,
+.formio-form i[class*="fa-"]::before {
+  font-family: FontAwesome !important;
+}
+
+.formio-form {
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.formio-form > .formio-component { margin-bottom: 26px; }
+
+/* ----- Labels -------------------------------------------------------- */
+
+.formio-form .field-label,
+.formio-form label.col-form-label,
+.formio-form label.form-label,
+.formio-form .col-form-label {
+  font-size: 13px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+  line-height: 1.3;
+  font-style: normal;
+}
+
+.formio-form .field-required::after,
+.formio-form label.field-required::after { color: var(--accent); margin-left: 4px; content: "*"; }
+
+/* ----- Inputs -------------------------------------------------------- */
+
+.formio-form .form-control,
+.formio-form input.form-control,
+.formio-form select.form-control,
+.formio-form select.form-select,
+.formio-form textarea.form-control {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule-strong);
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 19px;
+  color: var(--ink);
+  box-shadow: none;
+  line-height: 1.5;
+  transition: border-color 0.15s ease;
+  width: 100%;
+}
+.formio-form .form-control:focus,
+.formio-form .form-select:focus {
+  background: transparent;
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: none;
+}
+.formio-form .form-control::placeholder { color: var(--ink-faint); font-style: italic; }
+
+.formio-form textarea.form-control {
+  border: 1px solid var(--rule-strong);
+  padding: 14px 16px;
+  min-height: 140px;
+  background: var(--paper-raised);
+}
+
+.formio-form .form-check-input {
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+}
+.formio-form .form-check-input:checked {
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
+.formio-form .form-check-input:focus { box-shadow: 0 0 0 2px rgba(192, 54, 45, 0.25); border-color: var(--accent); }
+
+.formio-form .form-check-label {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Input-group: apply the underline to the wrapper, not each child,
+   so calendar/picker icons don't sprout their own short underline.
+   flex-wrap defaults to wrap in Bootstrap 5; combined with our
+   width:100% on .form-control that pushes appended buttons (calendar
+   icon, etc.) onto a second row. Force nowrap so the icon stays
+   inline. */
+.formio-form .input-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  border-bottom: 1px solid var(--rule-strong);
+  background: transparent;
+  transition: border-color 0.15s ease;
+}
+.formio-form .input-group:focus-within { border-bottom-color: var(--accent); }
+
+.formio-form .input-group .form-control,
+.formio-form .input-group input.form-control,
+.formio-form .input-group .form-select,
+.formio-form .input-group .input-group-text {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.formio-form .input-group-text {
+  font-size: 15px;
+  color: var(--ink-muted);
+  font-style: italic;
+  padding: 10px 12px;
+}
+
+/* Hidden inputs used by widgets (flatpickr, etc.) must never show */
+.formio-form input[type="hidden"] { display: none !important; }
+
+/* ----- Buttons ------------------------------------------------------- */
+
+.formio-form .btn {
+  font-size: 14px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 15px 24px;
+  border-width: 1px;
+  font-weight: 500;
+  line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  --bs-btn-border-radius: 0;
+}
+
+.formio-form .btn-primary,
+.formio-form button.btn-primary {
+  background: var(--ink) !important;
+  border-color: var(--ink) !important;
+  color: var(--paper) !important;
+  --bs-btn-bg: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-color: var(--paper);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-hover-color: var(--paper);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  --bs-btn-active-color: var(--paper);
+}
+.formio-form .btn-primary:hover,
+.formio-form .btn-primary:focus,
+.formio-form .btn-primary:active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--paper) !important;
+  box-shadow: none !important;
+}
+
+.formio-form .btn-secondary,
+.formio-form .btn-default,
+.formio-form .btn-light,
+.formio-form .btn-outline-secondary {
+  background: transparent !important;
+  border-color: var(--ink) !important;
+  color: var(--ink) !important;
+}
+.formio-form .btn-secondary:hover,
+.formio-form .btn-default:hover,
+.formio-form .btn-light:hover,
+.formio-form .btn-outline-secondary:hover {
+  background: transparent !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  box-shadow: none !important;
+}
+
+/* ----- Wizard pagination (top step indicator) -----------------------
+   Override Bootstrap 5's --bs-pagination-* variables at the .pagination
+   scope. Property-level rules alone get out-bid by Bootstrap's
+   `.page-item.active .page-link { background-color: var(--bs-pagination-active-bg) }`
+   because the variable overrides the property cleanly. Re-skinning at
+   the variable layer is the only way to fully neutralize Bootstrap's
+   blue-pill active state without a chain of !important. */
+
+.formio-form .pagination {
+  --bs-pagination-color: var(--ink-muted);
+  --bs-pagination-bg: transparent;
+  --bs-pagination-border-color: transparent;
+  --bs-pagination-border-radius: 0;
+  --bs-pagination-border-width: 0;
+  --bs-pagination-padding-x: 16px;
+  --bs-pagination-padding-y: 18px;
+  --bs-pagination-hover-color: var(--ink);
+  --bs-pagination-hover-bg: transparent;
+  --bs-pagination-hover-border-color: transparent;
+  --bs-pagination-focus-color: var(--ink);
+  --bs-pagination-focus-bg: transparent;
+  --bs-pagination-focus-box-shadow: none;
+  --bs-pagination-active-color: var(--ink);
+  --bs-pagination-active-bg: transparent;
+  --bs-pagination-active-border-color: transparent;
+  --bs-pagination-disabled-color: var(--ink-faint);
+  --bs-pagination-disabled-bg: transparent;
+  --bs-pagination-disabled-border-color: transparent;
+
+  list-style: none;
+  padding: 0;
+  margin: 0 0 44px 0;
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.formio-form .pagination .page-item {
+  flex: 1;
+  border-right: 1px solid var(--rule);
+  margin: 0;
+}
+.formio-form .pagination .page-item:last-child { border-right: 0; }
+.formio-form .pagination .page-link {
+  font-size: 13px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 18px 16px;
+  text-align: left;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  line-height: 1.3;
+}
+/* Match Form.io's runtime-injected wizard selector specificity
+   (.formio-form > div > nav > ul.pagination ...) so the editorial
+   skin actually wins. !important here is for the active state only —
+   Bootstrap's blue-pill is otherwise unkillable. */
+.formio-form > div > nav > ul.pagination .page-item.active .page-link,
+.formio-form > div > nav > ul.pagination .page-item.active .page-link:hover,
+.formio-form .pagination .page-item.active .page-link,
+.formio-form .pagination .page-item.active .page-link:hover {
+  color: var(--ink) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  position: relative;
+  border: 0 !important;
+  font-weight: 600;
+}
+.formio-form > div > nav > ul.pagination .page-item.active .page-link::before,
+.formio-form .pagination .page-item.active .page-link::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+.formio-form > div > nav > ul.pagination .page-item .page-link,
+.formio-form .pagination .page-item .page-link {
+  color: var(--ink-muted) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  text-decoration: none;
+}
+.formio-form > div > nav > ul.pagination .page-item .page-link:hover,
+.formio-form .pagination .page-item .page-link:hover {
+  color: var(--ink) !important;
+  background: transparent !important;
+}
+
+/* ----- Errors -------------------------------------------------------- */
+
+.formio-form .formio-errors .error,
+.formio-form .help-block.form-text.error,
+.formio-form .invalid-feedback,
+.formio-form .invalid-feedback div {
+  color: var(--danger);
+  font-size: 13px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  margin-top: 8px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.formio-form .has-error .form-control,
+.formio-form .is-invalid.form-control,
+.formio-form .form-control.is-invalid { border-bottom-color: var(--danger); }
+
+.formio-form .alert { border-radius: 0; border: 0; padding: 16px 20px; }
+.formio-form .alert-danger {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--danger);
+  color: var(--ink);
+  font-size: 14px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.formio-form .alert-warning {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+}
+
+/* ----- Panels / cards ----------------------------------------------- */
+
+.formio-form .card,
+.formio-form .panel,
+.formio-form .panel-default,
+.formio-form fieldset.formio-component-panel,
+.formio-form .well {
+  background: transparent !important;
+  --bs-card-bg: transparent;
+  --bs-card-border-color: transparent;
+  border: 0 !important;
+  border-top: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+.formio-form .card-header,
+.formio-form .panel-heading {
+  background: transparent !important;
+  border-bottom: 1px solid var(--rule) !important;
+  font-size: 13px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 18px 0;
+  font-weight: 500;
+  --bs-card-cap-bg: transparent;
+}
+.formio-form .card-body,
+.formio-form .panel-body { padding: 24px 0; background: transparent !important; }
+
+/* ----- Radio / checkbox groups (image-radio cards too) --------------
+   Bootstrap positions the check via padding-left: 1.5em + margin-left: -1.5em
+   on the input. We MUST preserve that padding or the checkbox floats outside
+   the row. We only add vertical padding + a divider rule. */
+
+.formio-form .form-check {
+  background: transparent !important;
+  padding: 14px 0 14px 1.8em;
+  margin: 0;
+  min-height: 0;
+  display: block;
+  position: relative;
+}
+.formio-form .formio-component-radio .form-check,
+.formio-form .formio-component-selectboxes .form-check,
+.formio-form .formio-component-checkbox .form-check {
+  border-bottom: 1px solid var(--rule);
+}
+.formio-form .formio-component-radio .form-check:last-child,
+.formio-form .formio-component-selectboxes .form-check:last-child { border-bottom: 0; }
+
+.formio-form .form-check .form-check-input {
+  float: left;
+  margin-left: -1.8em;
+  margin-top: 0.25em;
+}
+
+.formio-form .radio-selected { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* ----- Signature ----------------------------------------------------- */
+
+.formio-form .signature-pad-body {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+}
+.formio-form .signature-pad-refresh {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 0;
+  font-size: 12px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ----- Edit grid (additional drivers) ------------------------------- */
+
+.formio-form .editgrid-listgroup { border: 0; border-top: 1px solid var(--rule-strong); }
+.formio-form .list-group-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 18px 0;
+}
+
+/* ----- Tables (used in the payment summary step) -------------------- */
+
+.formio-form .table {
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--rule);
+  color: var(--ink);
+  font-size: 17px;
+  margin-bottom: 28px;
+}
+.formio-form .table thead th {
+  font-size: 13px;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 12px 0;
+}
+.formio-form .table td, .formio-form .table th {
+  border-color: var(--rule);
+  padding: 14px 0;
+  vertical-align: middle;
+}
+.formio-form .table td { font-size: 18px; color: var(--ink-soft); }
+.formio-form .table td:last-child { text-align: right; font-style: italic; color: var(--ink); }
+
+/* ----- Wizard page container -------------------------------------- */
+
+.formio-form .wizard-page { margin-top: 12px; }
+
+/* ----- Tooltips / descriptions ------------------------------------- */
+
+.formio-form .form-text,
+.formio-form .field-description,
+.formio-form small.form-text {
+  font-size: 15px;
+  color: var(--ink-muted);
+  margin-top: 6px;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.45;
+}
+
+/* ----- Headings inside form components ----------------------------- */
+
+.formio-form h1, .formio-form h2, .formio-form h3, .formio-form h4, .formio-form h5 {
+  font-weight: 400;
+  color: var(--ink);
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+.formio-form h1 { font-size: 42px; line-height: 1.05; margin: 0 0 14px; }
+.formio-form h2 { font-size: 32px; line-height: 1.1; margin: 0 0 12px; }
+.formio-form h3 { font-size: 26px; line-height: 1.15; margin: 0 0 10px; }
+.formio-form h4 { font-size: 20px; line-height: 1.25; margin: 0 0 8px; }
+
+/* ----- Paragraphs inside components ------------------------------- */
+
+.formio-form p {
+  color: var(--ink-soft);
+  line-height: 1.6;
+  font-size: 17px;
+  font-style: normal;
+}
+
+/* ====================================================================
+   Image radio cards (custom imageRadioCard component)
+
+   Palette is driven by @formio/contrib's design tokens — we just set
+   the CSS custom properties and cascade handles the rest. No more
+   specificity fights with the component's default green.
+   ==================================================================== */
+
+.formio-form {
+  --cc-gap: 18px;
+  --cc-radius: 0;
+  --cc-border-width: 1px;
+  --cc-card-bg: transparent;
+  --cc-border: var(--rule);
+  --cc-border-hover: var(--ink);
+  --cc-shadow-hover: none;
+  --cc-border-selected: var(--accent);
+  --cc-ring-selected: var(--accent);
+  --cc-ring-selected-width: 1px;
+  --cc-glow-selected: transparent;
+  --cc-image-bg: var(--paper-deep);
+  --cc-image-border: var(--rule);
+  --cc-label-color: var(--ink);
+}
+
+/* Responsive column overrides — honor the form builder's `data-cols`
+   setting on wide viewports, collapse to auto-fill on narrow ones. */
+.formio-form .cc-grid[data-cols="1"] { grid-template-columns: 1fr; }
+.formio-form .cc-grid[data-cols="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.formio-form .cc-grid[data-cols="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.formio-form .cc-grid[data-cols="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.formio-form .cc-grid[data-cols="5"] { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.formio-form .cc-grid[data-cols="6"] { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+@media (max-width: 720px) {
+  .formio-form .cc-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+
+/* Drift-only card structure overrides — contrib uses default block layout,
+   we want flex-column so image + label stack predictably. */
+.formio-form .cc-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Hidden cards (off-page or filter-mismatch) MUST stay hidden even when
+   the editorial display:flex rule above would otherwise resurrect them.
+   Specificity bump so contrib's .cc-card--hidden semantics win. */
+.formio-form .cc-card.cc-card--hidden {
+  display: none;
+}
+.formio-form .cc-card:hover {
+  background: var(--paper-raised);
+}
+.formio-form .cc-card:has(input:checked) {
+  background: var(--paper-raised);
+}
+
+/* Drift-only: invert the price pill on selection — filled accent, cream text. */
+.formio-form .cc-card:has(input:checked) .cc-card-price {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+.formio-form .cc-card:has(input:checked) .cc-card-price em {
+  opacity: 0.85;
+}
+
+/* Visually-hide the radio but keep it keyboard- and click-forwardable
+   from the label. Targeted structurally because Form.io's Radio base
+   reassigns the input's className after render, stripping the template's
+   `cc-card__input` class. */
+.formio-form .cc-card > input[type="radio"],
+.formio-form .cc-card__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.formio-form .cc-card__image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--paper-deep);
+  border-bottom: 1px solid var(--rule);
+}
+.formio-form .cc-card__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.formio-form .cc-card--selected .cc-card__image-wrap { border-bottom-color: var(--accent); }
+
+.formio-form .cc-card__label {
+  padding: 16px 18px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--ink);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.formio-form .cc-card__label br { display: block; content: ""; margin-top: 2px; }
+.formio-form .cc-card__label small {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Name — left side, can wrap/truncate gracefully. */
+.formio-form .cc-card-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+}
+
+/* Price pill — right side. Thin accent-red ring, tabular numerals,
+   italic "/day" suffix. Auction-catalog tone, not SaaS badge. */
+.formio-form .cc-card-price {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 3px 11px 4px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  background: transparent;
+}
+.formio-form .cc-card-price em {
+  font-size: 11px;
+  font-style: italic;
+  opacity: 0.7;
+  letter-spacing: 0;
+}
+
+/* Text-only variant (no image, e.g. insurance tier cards) — stack the
+   label HTML vertically. The base .cc-card__label uses flex-row with
+   justify-between to balance name + price pill on vehicle cards, but
+   text-only labels are a single flow of <strong><br><small> that needs
+   column layout to read correctly. */
+.formio-form .cc-card--text-only .cc-card__label {
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 110px;
+  text-align: center;
+}
+
+/* ====================================================================
+   Payment summary (review page) — class-hook styling for theme-agnostic
+   HTML in the form schema. Editorial pattern, two distinct table modes:
+
+     .payment-summary-table         museum-label rhythm — italic faint
+                                    label in a shrink-to-fit column,
+                                    upright ink value flows to its
+                                    right. Tight pairing, no big gap.
+
+     .payment-summary-table--cost   itemized receipt — labels left,
+                                    italic figures right, total lifted
+                                    by a heavier rule and accent ink.
+
+   All-caps tracked labels are reserved for the section heading; body
+   labels whisper in italic.
+   ==================================================================== */
+
+.formio-form .payment-summary-heading {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* -- Base table: shared resets + inline label-value rhythm. */
+.formio-form .payment-summary-table {
+  --bs-table-bg: transparent;
+  --bs-table-border-color: transparent;
+  width: 100%;
+  margin: 0 0 28px;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: var(--ink);
+}
+.formio-form .payment-summary-table tr {
+  border-bottom: 1px dotted var(--rule);
+}
+.formio-form .payment-summary-table tr:last-child {
+  border-bottom: 0;
+}
+.formio-form .payment-summary-table th,
+.formio-form .payment-summary-table td {
+  padding: 9px 0;
+  background: transparent;
+  border: 0;
+  vertical-align: baseline;
+}
+.formio-form .payment-summary-table th {
+  width: 1%;                       /* shrink-to-fit the label column */
+  white-space: nowrap;
+  padding-right: 22px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-faint);
+  text-align: left;
+}
+.formio-form .payment-summary-table td,
+.formio-form .payment-summary-table td:last-child {
+  text-align: left;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -- Cost variant: receipt format. Override the museum layout —
+      label takes natural width left, figure pushes to the right. */
+.formio-form .payment-summary-table--cost {
+  margin-top: 8px;
+}
+.formio-form .payment-summary-table--cost th {
+  width: auto;
+  white-space: normal;
+  padding-right: 0;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.formio-form .payment-summary-table--cost td,
+.formio-form .payment-summary-table--cost td:last-child {
+  text-align: right;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* -- Total row: heavier rule above, accent figure to the right.
+      Drop the dotted under-rule the cascade gave us. */
+.formio-form .payment-summary-table__total {
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 0;
+}
+.formio-form .payment-summary-table__total th,
+.formio-form .payment-summary-table__total td {
+  padding-top: 18px;
+  padding-bottom: 4px;
+  font-size: 18px;
+}
+.formio-form .payment-summary-table__total th {
+  color: var(--ink);
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-top: 22px;
+}
+.formio-form .payment-summary-table__total td,
+.formio-form .payment-summary-table__total td:last-child {
+  color: var(--accent);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  text-align: right;
+}
+
+/* -- Pickup → Return: tight editorial dateline. Smaller arrow,
+      slimmer padding so the block doesn't dominate empty states. */
+.formio-form .payment-trip {
+  display: flex;
+  align-items: stretch;
+  margin: 0 0 28px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.formio-form .payment-trip__leg {
+  flex: 1;
+  padding: 14px 18px;
+}
+.formio-form .payment-trip__leg--return {
+  text-align: right;
+}
+.formio-form .payment-trip__label {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.formio-form .payment-trip__location {
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+.formio-form .payment-trip__date {
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.formio-form .payment-trip__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-style: italic;
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+}
+
+.formio-form .cc-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+/* (Loading spinner override lives further down at .formio-loader /
+   .loader-wrapper .loader — that selector also handles the case where
+   the loader sits outside .formio-form during initial form fetch.) */
+.formio-form .cc-pagination button {
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 6px 14px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+}
+.formio-form .cc-pagination button:hover:not(:disabled) { border-color: var(--ink); }
+.formio-form .cc-pagination button:disabled { opacity: 0.4; cursor: default; }
+
+/* ====================================================================
+   Form.io loading spinner — editorial restyle.
+
+   Default Form.io ships a 60x60 grey/blue ring from formio.builder.css,
+   but Drift only loads it partially (we don't @import the full bundle),
+   so the loader inherits half the rules and ends up oval / off-color.
+   Define from scratch with editorial palette so it's predictable in
+   any rendering context.
+
+   DOM produced by Form.io:
+     <div class="formio-loader">
+       <div class="loader-wrapper">
+         <div class="loader text-center"></div>
+       </div>
+     </div>
+
+   The .formio-loader sits at the form root (outside .formio-form), so
+   selectors must NOT scope to .formio-form. Targeting the loader
+   classes directly is fine — they're specific enough not to collide.
+   ==================================================================== */
+
+/* Form.io core's loader uses .loader-wrapper > .loader.
+   @formio/angular's FormioLoaderComponent uses .formio-loader-wrapper
+   > .formio-loader (different class names, hardcoded 60px brand-blue
+   styles in component-scoped CSS). Both shapes need the editorial
+   skin. !important is required against Angular-scoped styles whose
+   attribute-selector specificity ties our class selectors and whose
+   bundle loads after ours.
+
+   DOM (Angular wrapper):
+     <div class="formio-loader-wrapper"><div class="formio-loader"></div></div>
+   DOM (Form.io core):
+     <div class="loader-wrapper"><div class="loader text-center"></div></div>
+*/
+
+.formio-loader-wrapper,
+.loader-wrapper {
+  position: absolute !important;
+  inset: 0 !important;
+  background: transparent;
+  z-index: 1000;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.formio-loader,
+.formio-loader-wrapper .formio-loader,
+.loader-wrapper .loader {
+  position: static !important;       /* override absolute centering */
+  margin: 0 !important;
+  width: 36px !important;
+  height: 36px !important;
+  /* Angular's FormioLoaderComponent scoped CSS sets `min-height: 100px`
+     on bare `.formio-loader`. Without overriding both min-height AND
+     height, actual height resolves to max(36, 100) = 100px, producing
+     a 36×100 oval. Same belt-and-suspenders for max-height. */
+  min-height: 0 !important;
+  max-height: none !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  border: 2px solid var(--rule) !important;
+  border-top-color: var(--accent) !important;
+  border-radius: 50% !important;
+  background: transparent;
+  display: inline-block;
+  animation: drift-spin 0.85s linear infinite;
+}
+
+@keyframes drift-spin {
+  to { transform: rotate(360deg); }
+}

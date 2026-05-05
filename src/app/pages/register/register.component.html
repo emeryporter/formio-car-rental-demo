@@ -1,0 +1,22 @@
+<app-page-frame>
+  <div class="auth-frame">
+    <div class="auth-head">
+      <span class="kicker">Create account</span>
+      <h1>Let's get you <em>on the road.</em></h1>
+    </div>
+
+    @if (banner(); as b) {
+      <div class="banner">{{ b }}</div>
+    }
+
+    <formio
+      [src]="registerUrl"
+      (beforeSubmit)="onBeforeSubmit($event)"
+      (submit)="onSubmit()">
+    </formio>
+
+    <div class="auth-foot">
+      Already registered? <a routerLink="/login">Sign in →</a>
+    </div>
+  </div>
+</app-page-frame>

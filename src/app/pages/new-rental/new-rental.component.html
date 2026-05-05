@@ -1,0 +1,6 @@
+<app-page-frame issueLabel="New reservation">
+  <section class="new-rental-section">
+    <app-section-head number="02" label="New reservation" title="Book a car." />
+    <formio [src]="rentalUrl" [renderOptions]="formioRenderOptions" (submit)="onSubmit()"></formio>
+  </section>
+</app-page-frame>

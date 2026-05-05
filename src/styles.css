@@ -1,0 +1,24 @@
+/* One typeface — EB Garamond in the weights/styles we use. */
+@import "@fontsource/eb-garamond/400.css";
+@import "@fontsource/eb-garamond/400-italic.css";
+@import "@fontsource/eb-garamond/500.css";
+@import "@fontsource/eb-garamond/500-italic.css";
+@import "@fontsource/eb-garamond/600.css";
+@import "@fontsource/eb-garamond/600-italic.css";
+
+/* Bootstrap 5 — gives the Form.io renderer its grid + utility scaffolding. */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Font Awesome is loaded via a direct <link> tag in index.html using
+   the cdnjs CDN. It cannot go through Angular's CSS pipeline because the
+   build chain double-escapes unicode codepoints (\f021 → \\f021),
+   destroying the glyph references that Form.io depends on. */
+
+/* Form.io contrib styles are loaded at runtime via the project's
+   Custom CSS URL setting (configured in the Form.io stage). */
+
+/* Editorial layers — loaded LAST so our overrides win the cascade. */
+@import "./styles/tokens.css";
+@import "./styles/base.css";
+@import "./styles/editorial.css";
+@import "./styles/editorial-formio.css";

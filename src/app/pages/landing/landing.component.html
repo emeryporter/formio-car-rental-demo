@@ -1,0 +1,54 @@
+<app-page-frame [issueLabel]="issueLabel">
+  <section class="hero">
+    <div class="rise">
+      <div class="section-number">01</div>
+      <div class="hero-step-label">Reserve</div>
+    </div>
+    <div class="hero-meta">
+      <span class="kicker kicker-accent rise rise-delay-1">A rental experience, unhurried</span>
+      <h1 class="display rise rise-delay-1">
+        Drive<br />into <em>now.</em>
+      </h1>
+      <p class="lede rise rise-delay-2">
+        Reserve a car online in a few minutes. Pick your vehicle, set your dates, and add
+        coverage if you need it. Your reservations live in your account &mdash; come back
+        any time to review them or <em>start another</em>.
+      </p>
+      <div class="hero-cta rise rise-delay-3">
+        @if (user()) {
+          <a routerLink="/dashboard" class="btn-editorial">Your reservations →</a>
+        } @else {
+          <a routerLink="/register" class="btn-editorial">Create an account →</a>
+          <a routerLink="/login" class="btn-ghost">Sign in</a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule rule-strong" />
+
+  <section class="three-up">
+    <div class="section-number">02</div>
+    <div class="three-up-col">
+      <div class="three-up-label">Choose</div>
+      <h3 class="subhead">Pick a vehicle.</h3>
+      <p class="three-up-body">
+        Browse makes and models available for your rental window. Daily rates and vehicle details are shown up front.
+      </p>
+    </div>
+    <div class="three-up-col">
+      <div class="three-up-label">Cover</div>
+      <h3 class="subhead">Add protection if you need it.</h3>
+      <p class="three-up-body">
+        Opt in to insurance coverage or decline. Add any extras &mdash; unlimited mileage, prepaid fuel, a child seat.
+      </p>
+    </div>
+    <div class="three-up-col">
+      <div class="three-up-label">Confirm</div>
+      <h3 class="subhead">Review, sign, and you're done.</h3>
+      <p class="three-up-body">
+        Check the details, sign the rental agreement, and your reservation is booked. You'll see it in your account right after.
+      </p>
+    </div>
+  </section>
+</app-page-frame>
