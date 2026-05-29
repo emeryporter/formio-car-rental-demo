@@ -2,15 +2,16 @@ import { Formio } from '@formio/js';
 
 export const PROJECT_URL = 'https://formio-product-overview.form.io';
 
-// Hosted contrib bundle, commit-pinned. Branch URLs are subject to
-// jsDelivr's ~12hr cache, so during active development we pin to a
-// specific commit SHA to guarantee the latest build is loaded.
-// Bump CONTRIB_REF after each contrib push.
-const CONTRIB_REF = '3d80aff';
+// Form.io contrib bundle (the `radiocard` component), hosted from this
+// repo's public/vendor/ via jsDelivr and commit-pinned. The component's
+// source of truth is formio/contrib; we vendor only the built artifacts.
+// Branch URLs are subject to jsDelivr's ~12hr cache, so we pin to a
+// specific commit SHA. Bump CONTRIB_REF after re-vendoring a new build.
+const CONTRIB_REF = '306c40a';
 const CONTRIB_JS_URL =
-  `https://cdn.jsdelivr.net/gh/emeryporter/card-component@${CONTRIB_REF}/dist/formio-contrib.use.min.js`;
+  `https://cdn.jsdelivr.net/gh/emeryporter/formio-car-rental-demo@${CONTRIB_REF}/public/vendor/formio-contrib.use.min.js`;
 const CONTRIB_CSS_URL =
-  `https://cdn.jsdelivr.net/gh/emeryporter/card-component@${CONTRIB_REF}/dist/formio-contrib.css`;
+  `https://cdn.jsdelivr.net/gh/emeryporter/formio-car-rental-demo@${CONTRIB_REF}/public/vendor/formio-contrib.css`;
 
 let initialized = false;
 

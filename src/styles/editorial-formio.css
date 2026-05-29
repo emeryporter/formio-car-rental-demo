@@ -482,7 +482,7 @@
 }
 
 /* ====================================================================
-   Image radio cards (custom imageRadioCard component)
+   Image radio cards (custom radiocard component)
 
    Palette is driven by @formio/contrib's design tokens — we just set
    the CSS custom properties and cascade handles the rest. No more
